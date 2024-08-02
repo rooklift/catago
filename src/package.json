@@ -1,13 +1,13 @@
 {
-	"name": "Ogatak",
-	"version": "2.0.9",
+	"name": "Catago",
+	"version": "0.1.0",
 	"author": "Rooklift",
 	"description": "KataGo interface",
 	"license": "AGPL-3.0",
 	"main": "prestart.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/rooklift/ogatak"
+		"url": "https://github.com/rooklift/catago"
 	},
 	"build": {
 		"asar": false,
