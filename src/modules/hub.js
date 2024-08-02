@@ -34,7 +34,7 @@ function init() {
 
 	let eng;
 	eng = new_engine();
-	eng.setup(config.engine, config.engineconfig, config.weights);
+	eng.setup(config.engine, config.engineconfig, config.weights, config.human_weights);
 
 	return Object.assign(Object.create(hub_prototype), {
 
@@ -478,9 +478,9 @@ let hub_main_props = {
 			if (mode === "best") {
 				s = this.node.get_board().parse_gtp_move(this.node.analysis.moveInfos[0].move);
 			} else if (mode === "policy") {
-				s = this.node.best_policy_move();
+				s = this.node.best_human_policy_move();
 			} else if (mode === "drunk") {
-				s = this.node.drunk_policy_move();
+				s = this.node.drunk_human_policy_move();
 			} else {
 				throw new Error("play_best(): bad call");
 			}
@@ -935,7 +935,7 @@ let hub_main_props = {
 			this.engine = new_engine();
 		}
 		stderrbox.reset();
-		this.engine.setup(config.engine, config.engineconfig, config.weights);		// Won't do anything unless all 3 are valid.
+		this.engine.setup(config.engine, config.engineconfig, config.weights, config.human_weights);		// Won't do anything unless all 3 are valid.
 		this.draw();
 	},
 

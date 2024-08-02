@@ -48,6 +48,7 @@ function new_query(query_node, eng_version = null, maxvisits = null, avoid_list 
 		includeMovesOwnership: (want_ownership && config.ownership_per_move) ? true : false,
 
 		overrideSettings: {
+			humanSLProfile: "rank_10k",
 			reportAnalysisWinratesAs: "BLACK",
 			wideRootNoise: config.wide_root_noise,
 		}

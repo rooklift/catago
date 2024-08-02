@@ -974,7 +974,7 @@ class Node {
 			return null;
 		}
 		if (!Array.isArray(this.analysis.policy)) {
-			return this.best_policy_move_alt();
+			return null;
 		}
 		let best_index = this.analysis.policy.reduce((result, prior, i, arr) => prior > arr[result] ? i : result, 0);
 		if (best_index >= this.width() * this.height()) {
@@ -986,12 +986,20 @@ class Node {
 		return this.canonical_symmetry(s);
 	}
 
-	best_policy_move_alt() {					// Alternative for when analysis.policy doesn't exist.
+	best_human_policy_move() {
 		if (!this.has_valid_analysis()) {
 			return null;
 		}
-		let best_info = this.analysis.moveInfos.reduce((best, info) => info.prior > best.prior ? info : best);
-		let s = this.get_board().parse_gtp_move(best_info.move);
+		if (!Array.isArray(this.analysis.humanPolicy)) {
+			return null;
+		}
+		let best_index = this.analysis.humanPolicy.reduce((result, prior, i, arr) => prior > arr[result] ? i : result, 0);
+		if (best_index >= this.width() * this.height()) {
+			return "";
+		}
+		let x = best_index % this.width();
+		let y = Math.floor(best_index / this.width());
+		let s = xy_to_s(x, y);
 		return this.canonical_symmetry(s);
 	}
 
@@ -1033,36 +1041,41 @@ class Node {
 		return this.canonical_symmetry(s);
 	}
 
-	drunk_policy_move_alt() {					// Alternative for when analysis.policy doesn't exist.
+	drunk_human_policy_move() {					// Weighted random choice from the human policy.
 		if (!this.has_valid_analysis()) {
 			return null;
 		}
-		let best_policy_move = this.best_policy_move_alt();
+		if (!Array.isArray(this.analysis.humanPolicy)) {
+			return this.drunk_policy_move_alt();
+		}
+		let best_policy_move = this.best_policy_move();
 		if (best_policy_move === "") {			// Pass if it's the best policy.
 			return "";
 		}
-		let valid_infos = this.analysis.moveInfos.filter(info => info.prior && info.prior > 0);
-		let policy_sum = valid_infos.reduce((sum, info) => sum + info.prior, 0);
-		if (policy_sum === 0) {
-			return null;
-		}
+		let policy_sum = this.analysis.humanPolicy.reduce((sum, prior) => prior > 0 ? sum + prior : sum, 0);
 		let rnd = Math.random() * policy_sum;
 		let acc = 0;
 		let result = null;
-		for (let info of valid_infos) {
-			acc += info.prior;
+		for (let n = 0; n < this.analysis.humanPolicy.length; n++) {
+			let prior = this.analysis.humanPolicy[n];
+			if (prior < 0) {
+				continue;						// Illegal move flag.
+			}
+			acc += prior;
 			if (acc >= rnd) {
-				result = info;
+				result = n;
 				break;
 			}
 		}
 		if (result === null) {
-			return best_policy_move;
+			return best_policy_move;			// Due to floating point error, we didn't get a result. Return best policy.
 		}
-		if (result.move === "pass") {			// We wanted to pass. Return best policy instead.
-			return best_policy_move;
+		if (result === this.analysis.humanPolicy.length - 1) {
+			return best_policy_move;			// We wanted to pass. Return best policy instead.
 		}
-		let s = this.get_board().parse_gtp_move(result.move);
+		let x = result % this.width();
+		let y = Math.floor(result / this.width());
+		let s = xy_to_s(x, y);
 		return this.canonical_symmetry(s);
 	}
 

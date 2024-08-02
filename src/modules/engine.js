@@ -42,6 +42,7 @@ class Engine {
 		this.filepath = "";
 		this.engineconfig = "";
 		this.weights = "";
+		this.human_weights = "";
 
 		// Note that the following will not be null'd just because we receive {isDuringSearch: false}
 		// results, rather they will be left in place to indicate that the app still wants to ponder if
@@ -122,24 +123,25 @@ class Engine {
 		}
 	}
 
-	setup(filepath, engineconfig, weights) {
+	setup(filepath, engineconfig, weights, human_weights) {
 
 		if (this.exe || this.has_quit) {
 			throw new Error("setup(): engine object should not be reused");
 		}
 
-		this.filepath     = fs.existsSync(filepath)     ? filepath     : "";
-		this.engineconfig = fs.existsSync(engineconfig) ? engineconfig : "";
-		this.weights      = fs.existsSync(weights)      ? weights      : "";
+		this.filepath      = fs.existsSync(filepath)      ? filepath      : "";
+		this.engineconfig  = fs.existsSync(engineconfig)  ? engineconfig  : "";
+		this.weights       = fs.existsSync(weights)       ? weights       : "";
+		this.human_weights = fs.existsSync(human_weights) ? human_weights : "";
 
-		if (!this.filepath || !this.engineconfig || !this.weights) {
+		if (!this.filepath || !this.engineconfig || !this.weights || !this.human_weights) {
 			return;
 		}
 
 		try {
 			this.exe = child_process.spawn(
 				this.filepath,
-				["analysis", "-config", this.engineconfig, "-model", this.weights, "-quit-without-waiting"],
+				["analysis", "-config", this.engineconfig, "-model", this.weights, "-human-model", this.human_weights, "-quit-without-waiting"],
 				{cwd: path.dirname(this.filepath)}
 			);
 		} catch (err) {
@@ -327,6 +329,7 @@ class Engine {
 		if (!this.filepath) return translate("GUI_ENGINE_NOT_SET");
 		if (!this.engineconfig) return translate("GUI_ENGINE_CONFIG_NOT_SET");
 		if (!this.weights) return translate("GUI_WEIGHTS_NOT_SET");
+		if (!this.human_weights) return translate("GUI_HUMAN_WEIGHTS_NOT_SET");
 		return `Engine (${path.basename(this.filepath)}) not running.`;
 	}
 

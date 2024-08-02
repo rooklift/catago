@@ -152,8 +152,8 @@ translations[`English`] = {
 		MENU_ENGINE_PLAYS_BLACK: `Engine plays Black`,
 		MENU_ENGINE_PLAYS_WHITE: `Engine plays White`,
 		MENU_ENGINE_PLAYS_CURRENT: `Engine plays current colour`,
-		MENU_ENGINE_PLAYS_POLICY: `Play using policy (no search)`,
-		MENU_ENGINE_PLAYS_DRUNK: `Play using policy (drunk version)`,
+		MENU_ENGINE_PLAYS_POLICY: `Play using human policy (no search)`,
+		MENU_ENGINE_PLAYS_DRUNK: `Play using human policy (drunk version)`,
 		MENU_AUTOSCROLL: `Autoscroll`,
 		MENU_AUTOSCROLL_DELAY: `Autoscroll delay`,
 		MENU_LOAD_GAMES_AT_FINAL_POSITION: `Load games at final position`,
@@ -178,6 +178,7 @@ translations[`English`] = {
 	GUI_ENGINE_NOT_SET: `Engine not set.`,
 	GUI_ENGINE_CONFIG_NOT_SET: `Engine config not set.`,
 	GUI_WEIGHTS_NOT_SET: `Network not set.`,
+	GUI_HUMAN_WEIGHTS_NOT_SET: `Human model not set.`,
 	GUI_RESOLVE_THIS: `Resolve this via the <span class="yellow">"Setup"</span> menu.`,
 
 	// Message (split across 2 lines) that shows at startup while KataGo loads...
