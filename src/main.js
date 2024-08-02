@@ -583,6 +583,18 @@ function menu_build() {
 					},
 				},
 				{
+					label: translate("MENU_CHOOSE_HUMAN_WEIGHTS"),
+					click: () => {
+						electron.dialog.showOpenDialog(win, {defaultPath: config.weights_folder})
+						.then(o => {
+							if (Array.isArray(o.filePaths) && o.filePaths.length > 0) {
+								win.webContents.send("set", {human_weights: o.filePaths[0]});
+								two_process_set("weights_folder", path.dirname(o.filePaths[0]));
+							}
+						});
+					},
+				},
+				{
 					type: "separator",
 				},
 				{

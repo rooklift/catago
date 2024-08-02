@@ -41,6 +41,7 @@ exports.defaults = {
 	"engine": "",
 	"engineconfig": "",
 	"weights": "",
+	"human_weights": "",
 
 	"editing": "",								// Reset at launch.
 	"avoid_set": {},							// Reset at launch.
@@ -126,9 +127,6 @@ exports.defaults = {
 	"kataconfig_folder": "",
 	"weights_folder": "",
 
-	"gtp_warning": "THE GTP INTERFACE IS EXPERIMENTAL AND UNSUPPORTED. BUT IF YOU MUST, EDIT THE FOLLOWING LINES...",
-	"gtp_filepath": "",							// Must be edited by the user in config.json
-	"gtp_argslist": [],							// Likewise.
 };
 
 // ---------------------------------------------------------------------------------------------------------------------------

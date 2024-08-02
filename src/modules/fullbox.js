@@ -62,21 +62,10 @@ let fullbox_prototype = {
 
 		let s = `<span class="green">${name} ${version} --> Electron ${process.versions.electron}</span>\n\n`;
 
-		if (config.gtp_filepath) {
-			s += translate("ABOUT_GTP_COMMAND") + `\n\n`;
-			s += `    <span class="yellow">${config.gtp_filepath}</span>\n`;
-			if (Array.isArray(config.gtp_argslist)) {
-				for (let item of config.gtp_argslist) {
-					s += `    <span class="yellow">${item}</span>\n`;
-				}
-			}
-			s += `\n`;
-		} else {
-			s += translate("ABOUT_FILE_LOCATIONS") + `\n\n`;
-			s += `    <span class="yellow" id="about_box_engine">${config.engine || "(unset)"}</span>\n`;
-			s += `    <span class="yellow" id="about_box_engineconfig">${config.engineconfig || "(unset)"}</span>\n`;
-			s += `    <span class="yellow" id="about_box_weights">${config.weights || "(unset)"}</span>\n\n`;
-		}
+		s += translate("ABOUT_FILE_LOCATIONS") + `\n\n`;
+		s += `    <span class="yellow" id="about_box_engine">${config.engine || "(unset)"}</span>\n`;
+		s += `    <span class="yellow" id="about_box_engineconfig">${config.engineconfig || "(unset)"}</span>\n`;
+		s += `    <span class="yellow" id="about_box_weights">${config.weights || "(unset)"}</span>\n\n`;
 
 		s += translate("ABOUT_CONFIG_LOCATION") + `\n\n`;
 		s += `    <span class="yellow">${config_io.filepath}</span>\n\n`;

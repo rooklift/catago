@@ -4,7 +4,6 @@ const fs = require("fs");
 const {ipcRenderer} = require("electron");
 
 const new_engine = require("./engine");
-const new_gtp_engine = require("./engine_gtp");
 const new_node = require("./node");
 
 const load_gib = require("./load_gib");
@@ -34,13 +33,8 @@ function init() {
 	Object.assign(hub_prototype, require("./hub_settings"));
 
 	let eng;
-	if (config.gtp_filepath) {
-		eng = new_gtp_engine();
-		eng.setup_with_command(config.gtp_filepath, config.gtp_argslist);
-	} else {
-		eng = new_engine();
-		eng.setup(config.engine, config.engineconfig, config.weights);
-	}
+	eng = new_engine();
+	eng.setup(config.engine, config.engineconfig, config.weights);
 
 	return Object.assign(Object.create(hub_prototype), {
 
@@ -921,42 +915,27 @@ let hub_main_props = {
 
 	clear_cache: function() {
 
-		if (this.engine.is_gtp) {
-
-			if (this.engine.known_commands.includes("clear_cache")) {
-				this.engine.__send("clear_cache");
-			} else {
-				alert("Not available for this GTP engine.");
-			}
-
-		} else {
-
-			if (compare_versions(this.engine.version, [1,9,0]) === -1) {
-				alert("Not supported by this version of KataGo.");
-				return;
-			}
-
-			this.halt();
-
-			this.engine.__send({
-				id: "clear_cache",			// Think this id doesn't matter.
-				action: "clear_cache"
-			});
+		if (compare_versions(this.engine.version, [1,9,0]) === -1) {
+			alert("Not supported by this version of KataGo.");
+			return;
 		}
+
+		this.halt();
+
+		this.engine.__send({
+			id: "clear_cache",			// Think this id doesn't matter.
+			action: "clear_cache"
+		});
 	},
 
 	start_engine: function() {
 		if (this.engine.exe || this.engine.has_quit) {
 			this.halt();
 			this.engine.shutdown();
-			this.engine = config.gtp_filepath ? new_gtp_engine() : new_engine();
+			this.engine = new_engine();
 		}
 		stderrbox.reset();
-		if (config.gtp_filepath) {
-			this.engine.setup_with_command(config.gtp_filepath, config.gtp_argslist);
-		} else {
-			this.engine.setup(config.engine, config.engineconfig, config.weights);		// Won't do anything unless all 3 are valid.
-		}
+		this.engine.setup(config.engine, config.engineconfig, config.weights);		// Won't do anything unless all 3 are valid.
 		this.draw();
 	},
 

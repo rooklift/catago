@@ -40,7 +40,8 @@ translations[`English`] = {
 
 		MENU_LOCATE_KATAGO: `Locate KataGo...`,
 		MENU_LOCATE_KATAGO_ANALYSIS_CONFIG: `Locate KataGo analysis config...`,
-		MENU_CHOOSE_WEIGHTS: `Choose network...`,
+		MENU_CHOOSE_WEIGHTS: `Choose (normal) network...`,
+		MENU_CHOOSE_HUMAN_WEIGHTS: `Choose human model...`,
 		MENU_CLEAR_CACHE: `Clear cache`,
 		MENU_RESTART: `Restart`,
 		MENU_ENGINE_REPORT_RATE: `Engine report rate`,

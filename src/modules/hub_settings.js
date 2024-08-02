@@ -92,11 +92,7 @@ module.exports = {
 				}
 			}
 
-			if (config.gtp_filepath) {
-				alert("A GTP engine is set up in the config, so this setting will not be used.");
-			} else {
-				this.start_engine();							// Won't do anything unless all 3 settings are valid.
-			}
+			this.start_engine();							// Won't do anything unless all 4 settings are valid.
 			break;
 
 		case "engineconfig":
@@ -109,20 +105,17 @@ module.exports = {
 				}
 			}
 
-			if (config.gtp_filepath) {
-				alert("A GTP engine is set up in the config, so this setting will not be used.");
-			} else {
-				this.start_engine();							// Won't do anything unless all 3 settings are valid.
-			}
+			this.start_engine();							// Won't do anything unless all 4 settings are valid.
 			break;
 
 		case "weights":
 
-			if (config.gtp_filepath) {
-				alert("A GTP engine is set up in the config, so this setting will not be used.");
-			} else {
-				this.start_engine();							// Won't do anything unless all 3 settings are valid.
-			}
+			this.start_engine();							// Won't do anything unless all 4 settings are valid.
+			break;
+
+		case "human_weights":
+
+			this.start_engine();							// Won't do anything unless all 4 settings are valid.
 			break;
 
 		case "info_font_size":
