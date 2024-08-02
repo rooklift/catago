@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ogatak</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:;">
+	<link rel="stylesheet" type="text/css" href="ogatak.css">
+	<script defer src="renderer.js"></script>
+</head>
+<body>
+
+
+	<div id="preloaders">
+		<img src="./gfx/black_stone.png">				<!-- I noticed that these images flickered the first -->
+		<img src="./gfx/white_stone.png">				<!-- time they appear so trying this as a solution.  -->
+	</div>
+
+
+	<div id="gridder">
+		<div id="tabdiv">
+			<br>
+			<div id="tabdiv_inner"></div>
+			<br>
+		</div>
+		<div id="boardinfo"><span id="info1">Ogatak...</span><br><span id="info2">Starting up!</span></div>
+		<div id="gridder_board_graph">
+			<div id="boardbg"></div>					<!-- wood texture only -->
+			<canvas id="ownershipcanvas"></canvas>		<!-- ownership, under the lines is kinda forced on us atm -->
+			<table id="boardtable"></table>				<!-- lines and stones (in td elements) -->
+			<canvas id="boardcanvas"></canvas>			<!-- analysis etc -->
+			<canvas id="graphcanvas"></canvas>
+			<canvas id="graphpositioncanvas"></canvas>
+		</div>
+		<div id="gridder_tree_comments">
+			<canvas id="treecanvas"></canvas>
+			<textarea id="comments"></textarea>
+		</div>
+	</div>
+
+
+	<div id="fbox"><div id="fbox_content"></div></div>
+	<div id="stderrbox"><div id="stderrbox_content"></div></div>
+	<div id="rootprops"><div id="rootprops_content"></div></div>
+
+
+</body>
+</html>
