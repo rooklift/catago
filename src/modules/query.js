@@ -49,7 +49,7 @@ function new_query(query_node, eng_version = null, maxvisits = null, avoid_list 
 
 		overrideSettings: {
 			ignorePreRootHistory: false,
-			humanSLProfile: "rank_10k",
+			humanSLProfile: "rank_5k",
 			reportAnalysisWinratesAs: "BLACK",
 			wideRootNoise: config.wide_root_noise,
 		}
