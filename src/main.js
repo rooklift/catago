@@ -246,7 +246,7 @@ electron.app.whenReady().then(() => {					// If "ready" event already happened, 
 	// Actually load the page last, I guess, so the event handlers above are already set up.
 
 	win.loadFile(
-		path.join(__dirname, "ogatak.html")
+		path.join(__dirname, "catago.html")
 	);
 });
 

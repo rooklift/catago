@@ -226,7 +226,7 @@ class Engine {
 				this.received_version = true;
 				for (let bv of bad_versions) {
 					if (compare_versions(bv, this.version) === 0) {
-						alert(`This exact version of KataGo (${o.version}) is known to crash under Ogatak, consider downgrading or upgrading.`);
+						alert(`This exact version of KataGo (${o.version}) is known to crash, consider downgrading or upgrading.`);
 					}
 				}
 			}

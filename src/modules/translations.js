@@ -225,7 +225,7 @@ translations[`English`] = {
 	// About box...
 	ABOUT_FILE_LOCATIONS: `Engine, engine config, and network are at:`,
 	ABOUT_GTP_COMMAND: `GTP program and arguments are:`,
-	ABOUT_CONFIG_LOCATION: `Ogatak config file is at:`,
+	ABOUT_CONFIG_LOCATION: `Catago config file is at:`,
 	ABOUT_RAM_USAGE: `RAM usage (MB) (engine not included):`,
 	ABOUT_THANKS_TRANSLATORS: `Thanks to the translators:`,
 
@@ -617,7 +617,7 @@ translations[`русский`] = {
 	ALERT_SAVED_COLLECTION: `Коллекция сохранена.`,
 
 	ABOUT_FILE_LOCATIONS: `Расположение KataGo, настроек анализа и файла сети:`,
-	ABOUT_CONFIG_LOCATION: `Расположение файла настроек Ogatak:`,
+	ABOUT_CONFIG_LOCATION: `Расположение файла настроек Catago:`,
 	ABOUT_RAM_USAGE: `Использование оперативной памяти (Мбайт):`,
 	ABOUT_THANKS_TRANSLATORS: `Спасибо переводчикам:`,
 
@@ -829,7 +829,7 @@ translations[`繁體中文`] = {
 
 	ABOUT_FILE_LOCATIONS: `引擎、設定檔和權重位於：`,
 	ABOUT_GTP_COMMAND: `GTP 引擎和參數為：`,
-	ABOUT_CONFIG_LOCATION: `Ogatak 的設定檔檔案位於：`,
+	ABOUT_CONFIG_LOCATION: `Catago 的設定檔檔案位於：`,
 	ABOUT_RAM_USAGE: `記憶體已使用 (MB) (不包含引擎)：`,
 	ABOUT_THANKS_TRANSLATORS: `感謝下列翻譯者：`,
 
@@ -1041,11 +1041,11 @@ translations[`简体中文`] = {
 
 	ABOUT_FILE_LOCATIONS: `引擎、配置文件和权重位于：`,
 	ABOUT_GTP_COMMAND: `GTP 引擎和参数为：`,
-	ABOUT_CONFIG_LOCATION: `Ogatak 的配置文件位于：`,
+	ABOUT_CONFIG_LOCATION: `Catago 的配置文件位于：`,
 	ABOUT_RAM_USAGE: `已使用的硬盘空间(MB) (不包括 KataGo)：`,
 	ABOUT_THANKS_TRANSLATORS: `感谢下列翻译者：`,
 
-	BAD_CONFIG_1: `无法解析 Ogatak 配置文件`,
+	BAD_CONFIG_1: `无法解析 Catago 配置文件`,
 	BAD_CONFIG_2: `此问题解决前，配置文件无法使用`,
 	BAD_CONFIG_3: `并且当前的设定值无法被保存`,
 	BAD_CONFIG_4: `请尝试修复配置文件`,

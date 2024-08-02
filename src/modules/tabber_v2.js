@@ -201,7 +201,7 @@ function update_img_outline(img, outlineflag) {
 function update_title(node) {
 	let desired = node.game_title_text();
 	if (!desired) {
-		desired = "Ogatak";
+		desired = "Catago";
 	}
 	set_title(desired);
 }
