@@ -100,7 +100,7 @@ exports.defaults = {
 	"fast_first_report": true,
 
 	"play_against_policy": false,
-	"play_against_drunk": false,
+	"play_against_drunk": true,
 
 	"autoscroll_delay": 1,
 
