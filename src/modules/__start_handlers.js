@@ -14,8 +14,10 @@
 // These two concepts are basically independent of each other.
 // At least, all of this is my possibly-flawed understanding.
 
-const {ipcRenderer} = require("electron");
+const {ipcRenderer, webUtils} = require("electron");		// webUtils might not actually exist, depending on version. Don't use it directly.
 const {event_path_class_string} = require("./utils");
+
+const get_path_for_file = (webUtils && webUtils.getPathForFile) ? webUtils.getPathForFile : file => file.path;
 
 // mousedown events in Electron 24-28 (at least) can be completely fake, see Electron issue #38322, I hate it so much...
 // Anyway in those versions we declare mousedown_event_is_electron_bug() to test for whether a click is fake...
@@ -278,8 +280,8 @@ window.addEventListener("drop", (event) => {
 	let files = [];
 	if (event.dataTransfer && event.dataTransfer.files) {
 		for (let file of event.dataTransfer.files) {
-			if (file.path) {
-				files.push(file.path);
+			if (get_path_for_file(file)) {
+				files.push(get_path_for_file(file));
 			}
 		}
 	}
